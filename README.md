@@ -13,7 +13,8 @@ The current implementation features a **Registration Module** that demonstrates:
 * **Environment-Agnostic Routing:** Utilizing relative pathing to ensure portability across various deployment environments.
 * **Form Serialization Prep:** Semantic use of `id` and `name` attributes for future API integration.
 
-## Project Structure
-- `index.html`: The primary entry point containing the Registration Form.
-- `style.css`: Modular stylesheet utilizing Flexbox for responsive positioning.
-- `success.html`: The post-submission confirmation view managing the user navigation flow.
+##  Project Structure
+- **[Registration-Module](./Registration-Module/)**: Core project directory.
+    - `index.html`: Entry point for the registration interface.
+    - `style.css`: Modular Flexbox stylesheet.
+    - `success.html`: Post-submission confirmation view.
