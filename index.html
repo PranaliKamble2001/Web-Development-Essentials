@@ -4,33 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Registration Form</h2>
-    <form action="/submit_registration" method="POST">
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName" required><br><br>
+    <form action="success.html" method="get">
+        <h2>Registration Form</h2>
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
 
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-        <label for="confirmPassword">Confirm Password:</label><br>
-        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-        <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone"><br><br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
 
-        <label for="dob">Date of Birth:</label><br>
-        <input type="date" id="dob" name="dob"><br><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
 
         <input type="submit" value="Register">
     </form>
 </body>
 </html>
-``
