@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title> Registration | UI Architect</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="success.html" method="get">
-        <h2>Registration Form</h2>
-        
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
+    <div class="container">
+        <div class="form-card">
+            <h2>Create Account</h2>
+            <p>Join our professional network today.</p>
+            
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="username">Full Name</label>
+                    <input type="text" id="username" placeholder="Name" required>
+                </div>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="name@company.com" required>
+                </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="••••••••" required>
+                        <button type="button" id="togglePassword">Show</button>
+                    </div>
+                </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone">
-
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob">
-
-        <input type="submit" value="Register">
-    </form>
+                <button type="submit" class="btn-submit">Register Now</button>
+            </form>
+            <p class="footer-text">Already have an account? <a href="#">Login</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
