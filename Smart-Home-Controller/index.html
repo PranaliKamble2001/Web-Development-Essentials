@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHome Architect | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="user-info">
+                <h1>Welcome Home, Architect</h1>
+                <p>All systems are running optimally.</p>
+            </div>
+            <div class="temp-badge">
+                <span>22°C</span>
+                <label>Indoor Temp</label>
+            </div>
+        </header>
+
+        <main class="device-grid">
+            <div class="device-card" onclick="toggleDevice(this)">
+                <div class="icon">💡</div>
+                <div class="info">
+                    <h3>Living Room Light</h3>
+                    <span class="status">Off</span>
+                </div>
+            </div>
+
+            <div class="device-card" onclick="toggleDevice(this)">
+                <div class="icon">❄️</div>
+                <div class="info">
+                    <h3>Air Conditioner</h3>
+                    <span class="status">Off</span>
+                </div>
+            </div>
+
+            <div class="device-card" onclick="toggleDevice(this)">
+                <div class="icon">🔒</div>
+                <div class="info">
+                    <h3>Main Gate Lock</h3>
+                    <span class="status">Off</span>
+                </div>
+            </div>
+
+            <div class="device-card" onclick="toggleDevice(this)">
+                <div class="icon">📺</div>
+                <div class="info">
+                    <h3>Smart TV</h3>
+                    <span class="status">Off</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
