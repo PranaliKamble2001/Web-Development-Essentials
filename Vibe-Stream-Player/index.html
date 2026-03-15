@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeStream | UI Architect Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="player-container">
+        <div class="album-art-wrapper">
+            <div class="vinyl-record" id="vinyl">
+                <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&q=80&w=500" alt="Album Art">
+            </div>
+            <div class="vinyl-center"></div>
+        </div>
+
+        <div class="track-info">
+            <h1 id="title">Initializing...</h1>
+            <p id="artist">Media Engine Loading</p>
+        </div>
+
+        <div class="progress-section">
+            <input 
+                type="range" 
+                id="progress" 
+                value="0" 
+                step="0.1" 
+                min="0" 
+                max="100"
+                title="Track Progress"
+                aria-label="Music Progress Slider"
+            >
+            <div class="time-stamps">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn" id="prev" aria-label="Previous Track">PREV</button>
+            <button class="play-btn" id="play" aria-label="Play or Pause">PLAY</button>
+            <button class="nav-btn" id="next" aria-label="Next Track">NEXT</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
