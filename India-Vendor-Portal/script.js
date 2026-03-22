@@ -1,34 +1,68 @@
+/**
+ * Vendor Portal Data Engine
+ */
+
 const orderData = [
-    { id: "BN-4001", state: "Maharashtra", amount: "₹4,200", mode: "UPI", status: "Packed" },
-    { id: "BN-4002", state: "Karnataka", amount: "₹1,850", mode: "COD", status: "In-Transit" },
-    { id: "BN-4003", state: "Maharashtra", amount: "₹9,400", mode: "UPI", status: "Delivered" },
-    { id: "BN-4004", state: "Delhi", amount: "₹2,100", mode: "COD", status: "Packed" },
-    { id: "BN-4005", state: "Maharashtra", amount: "₹3,500", mode: "UPI", status: "Delivered" }
+    { id: "BN-4001", state: "Maharashtra", amount: 4200, mode: "UPI", status: "Packed" },
+    { id: "BN-4002", state: "Karnataka", amount: 1850, mode: "COD", status: "In-Transit" },
+    { id: "BN-4003", state: "Maharashtra", amount: 9400, mode: "UPI", status: "Delivered" },
+    { id: "BN-4004", state: "Delhi", amount: 2100, mode: "COD", status: "Packed" },
+    { id: "BN-4005", state: "Maharashtra", amount: 3500, mode: "UPI", status: "Delivered" }
 ];
 
+// Professional Currency Formatter (Indian Locale)
+const inrFormatter = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0
+});
+
 /**
- * Renders the order rows into the table body
- * @param {Array} data - The array of order objects
+ * Main Render Function
  */
 function renderTable(data) {
     const tableBody = document.getElementById('order-rows');
-    tableBody.innerHTML = data.map(order => `
-        <tr>
-            <td style="font-weight:700;">${order.id}</td>
-            <td>${order.state}</td>
-            <td style="font-weight:800;">${order.amount}</td>
-            <td><span class="badge ${order.mode.toLowerCase()}">${order.mode}</span></td>
-            <td>
-                <span style="color: ${order.status === 'Delivered' ? '#138808' : '#ff9933'}">
-                    ● ${order.status}
-                </span>
-            </td>
-        </tr>
-    `).join('');
+    
+    if (data.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 50px; color: #94a3b8;">No shipments found for this query.</td></tr>`;
+        return;
+    }
+
+    tableBody.innerHTML = data.map(order => {
+        const isDelivered = order.status === 'Delivered';
+        const statusColor = isDelivered ? '#138808' : '#ff9933';
+
+        return `
+            <tr>
+                <td style="font-weight:700; color: #0a192f;">${order.id}</td>
+                <td>${order.state}</td>
+                <td style="font-weight:800;">${inrFormatter.format(order.amount)}</td>
+                <td><span class="badge ${order.mode.toLowerCase()}">${order.mode}</span></td>
+                <td>
+                    <span style="color: ${statusColor}; font-weight: 700; display: flex; align-items: center;">
+                        <span class="status-dot" style="background: ${statusColor}"></span>
+                        ${order.status}
+                    </span>
+                </td>
+            </tr>
+        `;
+    }).join('');
 }
 
 /**
- * Filters the table by Indian State
+ * Live Search Filter
+ */
+function searchOrders() {
+    const term = document.getElementById('vendorSearch').value.toLowerCase();
+    const filtered = orderData.filter(order => 
+        order.id.toLowerCase().includes(term) || 
+        order.state.toLowerCase().includes(term)
+    );
+    renderTable(filtered);
+}
+
+/**
+ * State-specific Filter
  */
 function filterByState(stateName) {
     const filtered = orderData.filter(order => order.state === stateName);
@@ -36,13 +70,14 @@ function filterByState(stateName) {
 }
 
 /**
- * Resets the table to show all entries
+ * Reset Dashboard
  */
 function resetTable() {
+    document.getElementById('vendorSearch').value = "";
     renderTable(orderData);
 }
 
-// Initializing the dashboard on page load
+// Initial Load
 document.addEventListener('DOMContentLoaded', () => {
     renderTable(orderData);
 });
