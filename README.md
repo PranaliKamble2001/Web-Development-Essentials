@@ -53,5 +53,5 @@ Each module within this architecture adheres to the following engineering standa
 * **Accessibility:** Strict adherence to **axe-core** standards; every interactive element includes accessible names and states.
 * **Performance:** Zero-dependency JavaScript for optimized, lightweight DOM manipulation.
 
----
+-----------------------------------------------------------------------------------------------------
 *Developed by Pranali | MCA Software Excellence Portfolio 2026*
