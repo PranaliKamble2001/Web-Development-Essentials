@@ -14,23 +14,23 @@ The repository follows a decoupled directory structure, ensuring each UI module 
 * **style.css:** "India-Navy" design system utilizing **conic-gradients** for zero-dependency data visualization (Payment Ratio charts) and fluid media queries for mobile-responsive administration.
 * **script.js:** Advanced state-engine featuring **Live Multi-Attribute Search**, **Intl.NumberFormat** for Indian Currency (INR) standards, and dynamic array-filtering for regional and payment-mode management.
 
+### 🎵 Vibe-Stream-Player v2.0
+**A high-fidelity media-logic interface focused on audio-visual synchronization and dynamic themes.**
+* **index.html:** Accessible media-shell featuring a **CSS-driven Audio Visualizer** and ARIA-compliant progress controls.
+* **style.css:** Advanced **Glassmorphism 2.0** engine utilizing `-webkit-backdrop-filter` and a **Dynamic Background Glow** that reacts to the current track's color palette.
+* **script.js:** Centralized **Media-State Engine** managing real-time track syncing, automated playlist progression, and high-performance DOM updates for the "Vinyl" rotation state.
+
 ### 📝 Task-Engine v2.0
 **A professional CRUD application focused on Data Persistence and User Workflow.**
 * **index.html:** Accessible shell with ARIA-compliant progress tracking.
 * **style.css:** High-fidelity Glassmorphism engine with vendor-prefixed properties for Safari/iOS.
 * **script.js:** Logic engine managing **LocalStorage persistence**, real-time Progress Analytics, and priority-based sorting.
 
-### 🎵 Vibe-Stream-Player
-**A modern media-logic interface focused on audio-visual synchronization.**
-* **index.html:** Accessible media-shell utilizing ARIA-compliant progress controls.
-* **style.css:** High-fidelity glassmorphism engine with vendor-prefixed properties for Safari/iOS support.
-* **script.js:** Media-state engine managing local asset playback, real-time syncing, and dynamic theme switching.
-
 ### 🔐 Registration-Module
 **A production-ready Authentication UI.**
 * **index.html:** Semantic Data Structure for user input.
-* **style.css:** Glassmorphism Design Engine built with Flexbox.
-* **script.js:** Behavioral Layer for UX validation and logic.
+* **style.css:** Glassmorphism Design Engine built with Flexbox and advanced backdrop-filtering.
+* **script.js:** Behavioral Layer for UX validation and form logic.
 
 ### 🏠 Smart-Home-Controller
 **A state-driven Dashboard Interface for IoT simulation.**
