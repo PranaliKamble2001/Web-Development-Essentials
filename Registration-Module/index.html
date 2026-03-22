@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Registration | UI Architect</title>
+    <title>SecureAuth | UI Architect Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -12,7 +13,7 @@
             <h2>Create Account</h2>
             <p>Join our professional network today.</p>
             
-            <form id="registrationForm">
+            <form id="registrationForm" novalidate>
                 <div class="input-group">
                     <label for="username">Full Name</label>
                     <input type="text" id="username" placeholder="Name" required>
@@ -20,7 +21,7 @@
 
                 <div class="input-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="name@company.com" required>
+                    <input type="email" id="email" placeholder="email@gmail.com" required>
                 </div>
 
                 <div class="input-group">
@@ -29,9 +30,13 @@
                         <input type="password" id="password" placeholder="••••••••" required>
                         <button type="button" id="togglePassword">Show</button>
                     </div>
+                    <div class="strength-meter">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                    <span id="strengthText" class="helper-text">Enter a secure password</span>
                 </div>
 
-                <button type="submit" class="btn-submit">Register Now</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Register Now</button>
             </form>
             <p class="footer-text">Already have an account? <a href="#">Login</a></p>
         </div>
