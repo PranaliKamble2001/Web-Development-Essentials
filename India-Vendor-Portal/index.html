@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India Vendor Portal | Admin</title>
+    <title>India Vendor Portal | Executive Admin</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -12,10 +12,11 @@
         <aside class="sidebar">
             <div class="logo">India<span>_POS</span></div>
             <nav class="nav-links">
-                <div class="nav-item active">Dash-Board</div>
-                <div class="nav-item">Gst-Invoices</div>
-                <div class="nav-item">Stock-Management</div>
-                <div class="nav-item">Payouts</div>
+                <div class="nav-item active" role="button">Dashboard</div>
+                <div class="nav-item" role="button">GST Invoices</div>
+                <div class="nav-item" role="button">Stock Management</div>
+                <div class="nav-item" role="button">Vendor Payouts</div>
+                <div class="nav-item" role="button">Settings</div>
             </nav>
         </aside>
 
@@ -28,20 +29,24 @@
                 <div class="user-chip">P. Merchant | Admin</div>
             </header>
 
+            <section class="search-section">
+                <input type="text" id="vendorSearch" placeholder="Search by Order ID or State..." onkeyup="searchOrders()" aria-label="Search orders">
+            </section>
+
             <section class="kpi-grid">
                 <div class="kpi-card">
-                    <label>TODAY'S_SALES</label>
+                    <label>TODAY'S SALES</label>
                     <div class="value">₹42,500</div>
                     <span class="trend up">+15% vs yesterday</span>
                 </div>
                 <div class="kpi-card">
-                    <label>GST_COLLECTED</label>
+                    <label>GST COLLECTED</label>
                     <div class="value">₹7,650</div>
                 </div>
                 <div class="kpi-card analysis-card">
-                    <label>PAYMENT_MODE_RATIO</label>
+                    <label>PAYMENT RATIO</label>
                     <div class="chart-container">
-                        <div class="donut-chart">
+                        <div class="donut-chart" aria-label="75% Prepaid ratio">
                             <div class="inner-circle">
                                 <span class="total-label">75%</span>
                                 <span class="sub-label">Prepaid</span>
@@ -63,19 +68,21 @@
                         <button class="filter-btn secondary" onclick="resetTable()">View All</button>
                     </div>
                 </div>
-                <table class="order-table">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Location</th>
-                            <th>Amount</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="order-rows">
-                        </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Location</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-rows">
+                            </tbody>
+                    </table>
+                </div>
             </section>
         </main>
     </div>
