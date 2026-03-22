@@ -1,13 +1,11 @@
 :root {
     --accent: #bc13fe; 
-    --bg: #0a0a0b;
-    --glass: rgba(255, 255, 255, 0.03);
+    --bg: #050505;
+    --glass: rgba(255, 255, 255, 0.05);
     --text: #ffffff;
 }
 
-* {
-     margin: 0; padding: 0; box-sizing: border-box; 
-    }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background: var(--bg);
@@ -17,118 +15,143 @@ body {
     justify-content: center;
     font-family: 'Inter', sans-serif;
     color: var(--text);
+    overflow: hidden;
+}
+
+/* Dynamic Background Glow */
+.bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.15;
+    transition: background 1s ease;
+    z-index: -1;
 }
 
 .player-container {
     background: var(--glass);
-    /* Cross-Browser Glassmorphism Support */
-    -webkit-backdrop-filter: blur(25px);
-    backdrop-filter: blur(25px);
-    
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 50px 40px;
-    border-radius: 50px;
-    width: 380px;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 40px;
+    border-radius: 60px;
+    width: 400px;
     text-align: center;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.9);
 }
 
-.album-art-wrapper {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 40px;
+/* Vinyl & Visualizer */
+.album-art-wrapper { 
+    position: relative; width: 240px; 
+    height: 240px; margin: 0 auto 40px; 
 }
 
 .vinyl-record {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     border-radius: 50%;
-    border: 12px solid #181818;
+    border: 10px solid #111;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    animation: rotate 12s linear infinite;
-    animation-play-state: paused;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    animation: rotate 15s linear infinite paused;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.vinyl-record.playing { 
-    animation-play-state: running; 
-}
+.vinyl-record.playing {
+     animation-play-state: running; transform: scale(1.05); 
+    }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+     from { transform: rotate(0deg); } to { transform: rotate(360deg); } 
+    }
+
+.visualizer {
+    position: absolute; bottom: -20px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 4px; height: 30px; align-items: flex-end;
+    opacity: 0; transition: 0.5s;
 }
 
-.vinyl-record img { 
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.8; 
+.vinyl-record.playing + .vinyl-center + .visualizer { opacity: 1; }
+
+.bar { width: 4px; background: var(--accent); border-radius: 2px; animation: bounce 1s infinite alternate; }
+.bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+.bar:nth-child(3) { animation-delay: 0.4s; height: 100%; }
+.bar:nth-child(4) { animation-delay: 0.1s; height: 40%; }
+
+@keyframes bounce { from { height: 5px; } to { height: 25px; } }
+
+/* Track Info */
+.track-info h1 { 
+    font-family: 'Syncopate', sans-serif; 
+    font-size: 1rem; letter-spacing: 4px; 
+    text-transform: uppercase; 
+    margin-bottom: 5px; 
+}
+.track-info p {
+     color: var(--accent); font-weight: 500; 
+     font-size: 0.9rem; letter-spacing: 1px; 
+     transition: 0.5s; 
+    }
+
+/* Custom Progress Slider */
+.progress-section { 
+    margin: 40px 0; 
 }
 
-.vinyl-center {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px; height: 40px;
-    background: var(--bg);
-    border-radius: 50%;
-    border: 4px solid var(--accent);
-}
-
-.track-info h1 {
-     font-family: 'Syncopate', sans-serif; 
-     font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
+.slider-wrapper { 
+    position: relative; width: 100%; height: 6px;
+     background: rgba(255,255,255,0.1);
+      border-radius: 10px;
      }
 
-.track-info p { 
-    color: var(--accent); font-weight: 300;
-     margin-top: 8px; opacity: 0.8; 
-}
-
-.progress-section {
-     margin: 35px 0; 
-    }
-
 #progress {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    accent-color: var(--accent);
-    background: rgba(255,255,255,0.1);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    appearance: none; background: transparent; cursor: pointer; z-index: 2;
 }
 
-.time-stamps {
-     display: flex; justify-content: space-between; 
-     font-size: 0.7rem; margin-top: 10px; color: #666; font-weight: 800; 
+#progress::-webkit-slider-thumb { 
+    appearance: none; width: 12px; height: 12px;
+     background: #fff; border-radius: 50%; 
+     box-shadow: 0 0 10px var(--accent); 
     }
 
-.controls { 
-    display: flex; justify-content: space-between; 
-    align-items: center; 
+.progress-fill {
+    position: absolute; top: 0; left: 0; height: 100%;
+    background: var(--accent); border-radius: 10px; width: 0%; z-index: 1;
 }
 
-.nav-btn { 
-    background: none; border: none; color: #555; 
-    cursor: pointer; font-size: 0.7rem; font-weight: 800; 
-    letter-spacing: 1px; transition: 0.3s;
- }
+.time-stamps { 
+    display: flex; justify-content: space-between;
+     font-size: 0.75rem; margin-top: 12px; 
+     color: #888; font-weight: 600; 
+    }
+
+/* Buttons */
+.controls {
+     display: flex; justify-content: space-between; 
+     align-items: center; 
+    }
+
+.nav-btn {
+     background: none; 
+     border: none; color: #777; cursor: pointer; 
+    font-size: 0.75rem; font-weight: 800; transition: 0.3s; 
+}
 
 .nav-btn:hover {
-     color: var(--accent); 
+     color: #fff; 
     }
 
 .play-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 18px 45px;
-    border-radius: 100px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(188, 19, 254, 0.3);
-    transition: 0.4s;
+    background: var(--accent); color: white; border: none;
+    padding: 20px 50px; border-radius: 100px; font-weight: 800;
+    cursor: pointer; box-shadow: 0 15px 30px rgba(188, 19, 254, 0.3);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .play-btn:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 15px 35px rgba(188, 19, 254, 0.5); 
-}
+    transform: scale(1.1);
+     box-shadow: 0 20px 40px rgba(188, 19, 254, 0.5); 
+    }
